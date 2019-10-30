@@ -1,13 +1,13 @@
 language: cpp
 
-dist: trusty
+#dist: trusty
 
 before_install:
   - eval "${MATRIX_EVAL}"
 
 install:
   # Install conan
-  - pip3 install --user -q conan
+  - pip install --user -q conan
   # Automatic detection of your arch, compiler, etc.
 
 script:
@@ -27,6 +27,5 @@ matrix:
           packages:
             - gcc-5
             - g++-5
-            - python3
       env:
         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
