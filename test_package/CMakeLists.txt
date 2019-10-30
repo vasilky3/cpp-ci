@@ -4,7 +4,7 @@ project(test_hello CXX)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
-add_executable({CMAKE_BINARY_DIR} ../tests/test_hello.cpp)
+add_executable(${PROJECT_NAME} ../tests/test_hello.cpp)
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
 
 # CTest is a testing tool that can be used to test your project.

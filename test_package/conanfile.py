@@ -3,7 +3,7 @@ import os
 from conans import ConanFile, CMake, tools
 
 
-class NelloTestConan(ConanFile):
+class HelloTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
     requires = "gtest/1.8.1@bincrafters/stable"
@@ -21,6 +21,6 @@ class NelloTestConan(ConanFile):
         self.copy('*.so*', dst='bin', src='lib')
 
     def test(self):
-        if not tools.cross_building(self.settings):
-            os.chdir("bin")
-            self.run(".%sexample" % os.sep)
+        # if not tools.cross_building(self.settings):
+        os.chdir("bin")
+        self.run(".%stest_hello" % os.sep)
