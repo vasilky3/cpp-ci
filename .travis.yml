@@ -2,13 +2,12 @@ language: cpp
 
 install:
   # Install conan
-  - pip install --user -q conan -s compiler.libcxx=libstdc++11
+  - pip install --user -q conan
   # Automatic detection of your arch, compiler, etc.
-  - conan user
 
 script:
   - mkdir build && cd build
-  - conan install .. --build=missing
+  - conan install .. --build -s compiler.libcxx=libstdc++11
   - cmake ..
   - cmake --build .
   - ./bin/test_hello
