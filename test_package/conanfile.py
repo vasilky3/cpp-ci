@@ -6,6 +6,7 @@ from conans import ConanFile, CMake, tools
 class NelloTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
+    requires = "gtest/1.8.1@bincrafters/stable"
 
     def build(self):
         cmake = CMake(self)
