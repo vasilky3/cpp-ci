@@ -1,5 +1,10 @@
 language: cpp
 
+dist: trusty
+
+before_install:
+  - eval "${MATRIX_EVAL}"
+
 install:
   # Install conan
   - pip install --user -q conan
@@ -11,3 +16,17 @@ script:
   - cmake ..
   - cmake --build .
   - ./bin/test_hello
+
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-5
+            - g++-5
+            - python3
+      env:
+        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
